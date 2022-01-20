@@ -98,9 +98,9 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">
-                        <img src="{{asset('frontend/assets/img/logo/logo-default.png') }}" alt="logo">
-                        MR Blog
+                    <a class="navbar-brand-centered page-scroll" href="#page-top">
+                        <img src="{{asset('frontend/assets/img/logo/logo-default1.png') }}" alt="Blog">
+                        Blog
                     </a>
                 </div>
         
