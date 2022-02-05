@@ -53,13 +53,13 @@ class DashboardPostController extends Controller
             'body' => 'required',
         ]);
 
-        // $file = $request->file('post-images');
-        // $filename = time() . '.' . $file->getClientOriginalExtension();
-        // $img = Image::make($file);
-        // if (Image::make($file)->width() > 720) {
-        //     $img->resize(800, 512, function ($constraint) {$constraint->aspectRatio();});
-        // }
-        // $img->save(public_path('post-images/') . $filename);
+        $file = $request->file('post-images');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $img = Image::make($file);
+        if (Image::make($file)->width() > 720) {
+            $img->resize(800, 512, function ($constraint) {$constraint->aspectRatio();});
+        }
+        $img->save(public_path('post-images/') . $filename);
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-images');
