@@ -203,10 +203,6 @@
                     @yield('content')
                 </div>
                 
-                <div class="row mt25 animated" data-animation="fadeInUp" data-animation-delay="800">
-                    {{-- {{ $posts->links() }} --}}
-                </div>
-                
             </div>
         </div>
         
@@ -243,8 +239,8 @@
                 <div class="row">
                     
                     <div class="col-md-2 col-xs-12 mb25">
-                        <div class="navbar-brand-footer center-block">Pasific</div>
-                        <div class="copyright center-block">&copy; 2016. All rights reserved.</div>
+                        <div class="navbar-brand-footer center-block">Mr</div>
+                        <div class="copyright center-block">&copy; 2022. All rights reserved.</div>
                     </div>
                 </div>
                 

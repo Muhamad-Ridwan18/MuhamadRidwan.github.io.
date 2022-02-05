@@ -2,45 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $title = '';
-        // if ($request->category) {
-        //     if (request('category')) {
-        //     $category = Category::where('name', 'like', '%'.$request->category.'%')->get();
-        //     $title = ' In ' . $category->name;  
-        //     }    
-        // }else{
-        //     if (request('category')) {
-        //         $category = Category::firstWhere('slug', request('category'));
-        //         $title = ' In ' . $category->name;
-        //     }
-        // }
-        
-
-        if (request('author')) {
-            $author = User::firstWhere('username', request('author'));
-            $title = ' By ' . $author->name;
-        }
-
-        return view('posts',[
-            "title" => "All Posts" . $title,
-            "posts" => Post::latest()->filter(['search', 'category', 'author'])->paginate(6)->withQueryString()
+        return view('posts', [
+            "title" => "All Posts",
+            "posts" => Post::latest()->filter([
+                'search' => request('search'),
+                'category' => request('category'),
+                'author' => request('author')
+            ])->paginate(6)->withQueryString()
         ]);
-
-        
     }
 
     public function show(Post $posts)
     {
-        return view('post',[
+        return view('post', [
             "title" => "Single Post",
             "posts" => $posts
         ]);
@@ -49,7 +33,7 @@ class PostController extends Controller
     public function store()
     {
         $data['posts'] = Post::latest()->get();
-        return view('dashboard.data.index',$data);
+        return view('dashboard.data.index', $data);
     }
 
     public function category()

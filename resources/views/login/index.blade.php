@@ -39,7 +39,7 @@
 
                         <h1 class="">Sign In</h1>
                         <p class="">Log in to your account to continue.</p>
-                        <form action="/login" method="post" class="text-left">
+                        <form action="/" method="post" class="text-left">
                             @csrf
                             <div class="form">
                                 <div id="email-field" class="field-wrapper input">

@@ -29,4 +29,8 @@
     </div>
     </div>
     @endforeach
+
+    <div class="row mt25 animated" data-animation="fadeInUp" data-animation-delay="800">
+        {{ $posts->links() }}
+    </div>
 @endsection

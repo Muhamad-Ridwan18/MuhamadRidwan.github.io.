@@ -24,6 +24,7 @@ Route::get('/categories', function () {
 });
 
 // Route Blog
+Route::get('/','PostController@index');
 Route::get('/blog','PostController@index');
 Route::get('/blog/{posts:slug}', 'PostController@show');
 
@@ -41,6 +42,8 @@ function(){return view('dashboard.index');})->middleware('auth');
 Route::get('/dashboard/posts/checkSlug','DashboardPostController@checkSlug')->middleware('auth');
 // route dashboard/posts
 Route::resource('/dashboard/posts', 'DashboardPostController')->middleware('auth');
+// route dashboard/category
+Route::resource('/dashboard/categories', 'CategoryController')->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -50,19 +53,19 @@ Route::get('/dashboard', function () {
 
 
 
-Route::get('/categories/{category:slug}', function(Category $category){
-    return view('posts',[
-        'title' => "Post By Category : $category->name",
-        'posts' => $category->posts->load('category', 'author')
-    ]);
-});
+// Route::get('/categories/{category:slug}', function(Category $category){
+//     return view('posts',[
+//         'title' => "Post By Category : $category->name",
+//         'posts' => $category->posts->load('category', 'author')
+//     ]);
+// });
 
-Route::get('/author/{author:username}', function(User $author){
-    return view('posts',[
-        'title' => "Post By Author : $author->name",
-        'posts' => $author->posts->load('category', 'author')
-    ]);
-});
+// Route::get('/author/{author:username}', function(User $author){
+//     return view('posts',[
+//         'title' => "Post By Author : $author->name",
+//         'posts' => $author->posts->load('category', 'author')
+//     ]);
+// });
 
 Route::get('/layouts-v2', function () {
     return view('layouts.main');
