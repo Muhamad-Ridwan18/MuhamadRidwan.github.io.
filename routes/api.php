@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostApiController;
+use App\Http\Controllers\CategoryApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,11 @@ use App\Http\Controllers\PostApiController;
 //     return $request->user();
 // });
 
+// route API posts
 Route::resource('posts', 'PostApiController');
 Route::get('search/{title}', 'PostApiController@search');
+Route::get('search/{user_id}', 'PostApiController@search');
+
+// route API Category
+Route::resource('categories', 'CategoryApiController');
+// Route::get('search/{name}', 'CategoryApiController@search');
